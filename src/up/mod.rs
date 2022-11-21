@@ -242,6 +242,14 @@ pub(crate) struct WasmcloudOpts {
     /// If enabled, wasmCloud will not be downloaded if it's not installed
     #[clap(long = "wasmcloud-start-only")]
     pub(crate) start_only: bool,
+
+    /// A port to use for the wasmCloud process. If not supplied, defaults to 4000
+    #[clap(long = "wasmcloud-port", env = WASMCLOUD_PORT)]
+    pub(crate) port: Option<u16>,
+
+    /// A port to use for the wasmCloud dashboard. If not supplied, defaults to 4000
+    #[clap(long = "wasmcloud-dashboard-port", env = WASMCLOUD_DASHBOARD_PORT)]
+    pub(crate) dashboard_port: Option<u16>,
 }
 
 pub(crate) async fn handle_command(

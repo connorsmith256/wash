@@ -52,6 +52,10 @@ pub(crate) const WASMCLOUD_ENABLE_IPV6: &str = "WASMCLOUD_ENABLE_IPV6";
 pub(crate) const WASMCLOUD_STRUCTURED_LOGGING_ENABLED: &str =
     "WASMCLOUD_STRUCTURED_LOGGING_ENABLED";
 pub(crate) const WASMCLOUD_CONFIG_SERVICE: &str = "WASMCLOUD_CONFIG_SERVICE";
+pub(crate) const WASMCLOUD_PORT: &str = "PORT";
+pub(crate) const DEFAULT_PORT: u16 = 4000;
+pub(crate) const WASMCLOUD_DASHBOARD_PORT: &str = "WASMCLOUD_DASHBOARD_PORT";
+pub(crate) const DEFAULT_DASHBOARD_PORT: u16 = 4000;
 
 /// Helper function to convert WasmcloudOpts to the host environment map.
 /// Takes NatsOpts as well to provide reasonable defaults
@@ -212,5 +216,13 @@ pub(crate) async fn configure_host_env(
     if wasmcloud_opts.enable_ipv6 {
         host_config.insert(WASMCLOUD_ENABLE_IPV6.to_string(), "1".to_string());
     }
+
+    if let Some(port) = wasmcloud_opts.port {
+        host_config.insert(WASMCLOUD_PORT.to_string(), port.to_string());
+    }
+    if let Some(dashboard_port) = wasmcloud_opts.dashboard_port {
+        host_config.insert(WASMCLOUD_DASHBOARD_PORT.to_string(), dashboard_port.to_string());
+    }
+
     host_config
 }
