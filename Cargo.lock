@@ -4207,6 +4207,7 @@ dependencies = [
 [[package]]
 name = "wasmcloud-control-interface"
 version = "0.25.0"
+source = "git+https://github.com/connorsmith256/control-interface-client?branch=bump/async-nats#57c8534641575de3b42fbb17ccca5eb30d1dbd43"
 dependencies = [
  "async-nats",
  "cloudevents-sdk",
@@ -4225,6 +4226,7 @@ dependencies = [
 [[package]]
 name = "wasmcloud-test-util"
 version = "0.8.0"
+source = "git+https://github.com/connorsmith256/wasmcloud-test?branch=bumpity-bump#e5a625a9a91eb9bcfd0a06b437bb027f15c64164"
 dependencies = [
  "anyhow",
  "async-trait",

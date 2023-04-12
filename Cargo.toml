@@ -135,8 +135,8 @@ walkdir = "2.3"
 wascap = "0.10.1"
 wash-lib = { version = "0.7.0", path = "./crates/wash-lib" }
 wasmbus-rpc = "0.13"
-wasmcloud-control-interface = {version = "0.25", path = "/Users/connor/Documents/wasmCloud/control-interface-client"}
-wasmcloud-test-util = {version = "0.8", path = "/Users/connor/Documents/wasmCloud/wasmcloud-test/wasmcloud-test-util"}
+wasmcloud-control-interface = {version = "0.25", git = "https://github.com/connorsmith256/control-interface-client", branch = "bump/async-nats"}
+wasmcloud-test-util = {version = "0.8", git = "https://github.com/connorsmith256/wasmcloud-test", branch = "bumpity-bump"}
 weld-codegen = "0.7"
 which = "4.4.0"
 chrono = "0.4.24"
