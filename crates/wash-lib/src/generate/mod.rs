@@ -182,7 +182,9 @@ async fn make_project(project: Project) -> std::result::Result<PathBuf, anyhow::
     let mut values = if let Some(values_file) = &project.values {
         let bytes = fs::read(values_file)
             .with_context(|| format!("reading values file {}", &values_file.display()))?;
-        let tm = toml::from_slice::<TomlMap>(&bytes)
+        let tm = std::str::from_utf8(&bytes)
+            .map_err(|err| anyhow!("{err}"))
+            .and_then(|s| toml::de::from_str::<TomlMap>(s).map_err(|err| anyhow!("{err}")))
             .with_context(|| format!("parsing values file {}", &values_file.display()))?;
         if let Some(toml::Value::Table(values)) = tm.get("values") {
             toml_to_json(values)?
